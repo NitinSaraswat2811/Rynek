@@ -1,13 +1,14 @@
-import React from 'react'
-import "./Logo.css";
+import { Link } from 'react-router-dom'
 
-function Logo() {
-  return (
-  <div className="logo">
-      ryn<span className="logo-e">e</span>k
-    </div>
-  );
-}
+const Logo = () => (
+  <Link
+    to="/"
+    aria-label="Rynek home"
+    className="shrink-0 text-xl font-extrabold leading-none tracking-tight text-ink sm:text-2xl"
+  >
+    ryn<span className="text-brand">e</span>k
+  </Link>
+)
 
-export default Logo;
+export default Logo
 
