@@ -1,23 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config();
+import 'dotenv/config'
+import app from './app.js'
+import { connectDB } from './config/db.js'
 
-const app = express();
+const PORT = process.env.PORT || 5000
 
-app.get("/", (req, res) => {
-    res.send("Rynek server is running");
-});
-
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log("MongoDB connected");
-    })
-    .catch((err) => {
-        console.error("MongoDB connection failed:", err.message);
-    });
-
-const PORT = 5000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+connectDB().then(() => {
+  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+})
